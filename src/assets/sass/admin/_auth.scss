@@ -1,0 +1,29 @@
+.login-page {
+  max-width: 360px;
+}
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+
+  a, a:active, a:hover, a:visited {
+      color: #fff;
+  }
+
+  img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+}
+.menu .chip {
+    margin: 0 0 10px 20px;
+    background-color: transparent;
+    color: #fff;
+}

@@ -1,0 +1,118 @@
+// Main Layout Grid
+.admin {
+  --spacing: 1rem;
+  --admin-nav-width: 70px;
+
+  // Flexbox Fallback
+  display: flex;
+  flex-wrap: wrap;
+
+  // Grid
+  display: grid;
+  height: 100vh;
+
+  grid-template-rows: var(--admin-header-height, 70px) 1fr var(--admin-footer-height, 70px);
+  grid-template-columns: var(--admin-nav-width, 80px) 1fr;
+  grid-template-areas:
+    "header header"
+    "nav    main"
+    "footer footer";
+
+  &__header {
+    display: flex;
+    flex-basis: 100%;
+    grid-area: header;
+    height: var(--admin-header-height, 70px);
+    background-color: var(--admin-header-background, #fff);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    position: relative;
+  }
+
+  &__nav {
+    flex: 0 0 var(--admin-nav-width, 250px);
+    grid-area: nav;
+    background-color: var(--admin-nav-background, #313541);
+  }
+
+  &__main {
+    flex: 1;
+    grid-area: main;
+    padding: var(--spacing);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    background-color: var(--admin-main-background, #f4f7fa);
+  }
+
+  &__footer {
+    display: flex;
+    grid-area: footer;
+    flex-basis: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--admin-footer-height, 70px);
+    padding: 0 var(--spacing);
+    color: var(--admin-footer-color, #4e5561);
+    background-color: var(--admin-footer-background, #1d2127);
+  }
+
+  @media screen and (min-width: 48rem) {
+    --spacing: 2rem;
+  }
+}
+
+.logo {
+  display: flex;
+  flex: 0 0 var(--admin-nav-width, 250px);
+  height: var(--admin-header-height, 70px);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  color: var(--admin-logo-color, #fff);
+  background-color: var(--admin-logo-background, #dc5a60);
+  font-size: 1rem;
+  overflow: hidden;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.ticker {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    margin-right: 1rem;
+  }
+}
+
+.home-page {
+    text-align: center;
+    h1 {
+        font-size: 2.3em;
+    }
+    h2 {
+        font-size: 2.1em;
+    }
+    img {
+        width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .admin {
+        --admin-nav-width: 250px;
+
+        .logo {
+            text-indent: 0;
+        }
+    }
+}
+

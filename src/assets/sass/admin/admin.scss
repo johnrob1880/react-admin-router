@@ -1,0 +1,22 @@
+// Global CSS
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+@import 'variables';
+@import 'layout';
+@import 'toolbar';
+@import 'menu';
+@import 'dashboard';
+@import 'auth';
+@import 'forms';
+@import 'buttons';
+@import 'images';
+@import 'typography';

@@ -1,0 +1,12 @@
+.btn {
+  display: inline-block;
+  border-radius: 5em;
+  border: 0;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+
+  &--primary {
+    color: var(--admin-primary-button-color, #fff);
+    background-color: var(--admin-primary-button-background, #56bf89);
+  }
+}

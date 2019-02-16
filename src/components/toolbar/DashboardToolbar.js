@@ -3,7 +3,7 @@ import { useStore } from 'react-hookstore';
 import appStore from './../../stores/appStore';
 
 function DashboardToolbar() {
-  const [state, dispatch] = useStore(appStore);
+  const dispatch = useStore(appStore)[1];
 
   const handleClick = event => {
     event.preventDefault();

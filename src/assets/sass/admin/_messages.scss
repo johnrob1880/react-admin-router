@@ -1,0 +1,109 @@
+.flash-message {
+    padding: 20px;
+    border: 1px solid #dcdcdc;
+    margin: 0 0 15px 0;
+
+    .closebtn {
+        margin-left: 15px;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    &.alert-info,
+    &.alert-danger,
+    &.alert-success,
+    &.alert-warning {
+        color: #fff;
+        .closebtn {
+            color: #fff;
+        }
+    }
+
+    &.alert-info {
+        background-color: #2196F3;        
+    }
+    &.alert-danger {
+        background-color: #f44336;
+    }
+    &.alert-success {
+        background-color: #4CAF50;
+    }
+    &.alert-warning {
+        background-color: #ff9800;
+    }
+}
+
+$snackbar-bottom-position: 80px;
+
+#snackbar {
+  visibility: hidden;
+  min-width: var(--admin-snackbar-width, 250px);
+  margin-left: var(--admin-snackbar-margin-left, -125px);
+  background-color: var(--admin-snackbar-background, #333);
+  color: var(--admin-snackbar-color, #fff);
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: var(--admin-snackbar-bottom, $snackbar-bottom-position);
+
+  &.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+}
+
+@-webkit-keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: var(--admin-snackbar-bottom, $snackbar-bottom-position);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: var(--admin-snackbar-bottom, $snackbar-bottom-position);
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {
+      bottom: var(--admin-snackbar-bottom, $snackbar-bottom-position);
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeout {
+    from {
+      bottom: var(--admin-snackbar-bottom, $snackbar-bottom-position);
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }

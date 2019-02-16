@@ -32,6 +32,7 @@
     flex: 0 0 var(--admin-nav-width, 250px);
     grid-area: nav;
     background-color: var(--admin-nav-background, #313541);
+    border-right: var(--admin-nav-border-right, 1px solid transparent);
   }
 
   &__main {
@@ -55,6 +56,7 @@
     padding: 0 var(--spacing);
     color: var(--admin-footer-color, #4e5561);
     background-color: var(--admin-footer-background, #1d2127);
+    border-top: var(--admin-footer-border-top, 1px solid transparent);
   }
 
   @media screen and (min-width: 48rem) {
@@ -72,6 +74,7 @@
   margin: 0;
   color: var(--admin-logo-color, #fff);
   background-color: var(--admin-logo-background, #dc5a60);
+  border-right: var(--admin-logo-border-right, 1px solid transparent);
   font-size: 1rem;
   overflow: hidden;
 

@@ -1,45 +1,41 @@
-import React from 'react';
-//import { useStore } from 'react-hookstore';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import AdminLayout from './components/layout/AdminLayout';
-import MainMenu from './components/menus/MainMenu';
-import Toolbar from './components/toolbar/Toolbar';
-import Footer from './components/footer/Footer';
-import Home from './components/pages/Home';
-import Login from './components/pages/Login';
-import Dashboard from './components/pages/dashboard/Dashboard';
-import Profile from './components/pages/Profile';
-import NotFound from './components/pages/NotFound';
-import { useTheme, defaultTheme } from './hooks/useTheme';
-//import authStore from './stores/authStore';
+import React, { useEffect } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import AdminLayout from "./components/layout/AdminLayout";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import Dashboard from "./components/pages/dashboard/Dashboard";
+import Profile from "./components/pages/Profile";
+import NotFound from "./components/pages/NotFound";
+import "./assets/sass/admin/admin.scss";
 
-//import './components/layout/admin-layout.scss';
-import './assets/sass/admin/admin.scss';
+import { useStore } from "react-hookstore";
+import appStore from "./stores/appStore";
 
-// const PrivateRoute = ({component: Component, ...rest}) => {
-//   const [state] = useStore(authStore);
-//   return (
-//     <Route {...rest}
-//       render={props => state.user !== null ? (
-//         <Component {...props} />
-//       ): (
-//       <Login />)} />
-//   )
-  
-// } 
 function App() {
-  useTheme({
-    ...defaultTheme, 
-    'admin-logo-background': 'green'
-  });
+  const [state, dispatch] = useStore(appStore);
+
+  const { accepts_cookies } = state;
+
+  if (!accepts_cookies) {
+    useEffect(() => {
+      dispatch({
+        type: "set_flash",
+        flash: {
+          message:
+            "🍪 This website uses cookies to give you the best, most relevant experience.",
+          className: "alert-info",
+          onClose: () => {
+            dispatch({ type: "accept_cookies" });
+          }
+        }
+      });
+      return () => {};
+    }, []);
+  }
+
   return (
     <BrowserRouter>
-      <AdminLayout 
-          baseUrl="/" 
-          title="Grid Admin" 
-          renderToolbar={Toolbar} 
-          renderMenu={MainMenu}
-          renderFooter={Footer}>
+      <AdminLayout baseUrl="/" title="Grid Admin">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/profile" component={Profile} />
@@ -50,8 +46,7 @@ function App() {
         </Switch>
       </AdminLayout>
     </BrowserRouter>
-
-  )
+  );
 }
 
 export default App;

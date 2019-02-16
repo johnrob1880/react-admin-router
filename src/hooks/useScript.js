@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 let cachedScripts = [];
 function useScript(src) {
   // Keeping track of script loaded and error state
@@ -61,3 +63,5 @@ function useScript(src) {
 
   return [state.loaded, state.error];
 }
+
+export default useScript;
